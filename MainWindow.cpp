@@ -3,6 +3,7 @@
 #include <vcl.h>
 #include "MainWindow.h"
 #include <string>
+#include "Validator.h"
 #pragma hdrstop
 using namespace std;
 
@@ -19,21 +20,25 @@ __fastcall TMainForm::TMainForm(TComponent* Owner) : TForm(Owner) {
 
 void __fastcall TMainForm::Create1Click(TObject *Sender) {
 	MessageDlg("Choose file directory", mtWarning, TMsgDlgButtons() << mbOK, 0);
-//	TProperties *properties = new TProperties(this);
-//	properties->ShowModal();
+	// TProperties *properties = new TProperties(this);
+	// properties->ShowModal();
 
 }
 // ---------------------------------------------------------------------------
 
-System::UnicodeString getStringFromMemo(TMemo *Memo){
-	return AnsiString(Memo ->Lines ->Text).c_str();
+string getStringFromMemo(TMemo *Memo) {
+	return AnsiString(Memo->Lines->Text).c_str();
 }
 
+void __fastcall TMainForm::EditSettingsClick(TObject *Sender) {
+	string str = getStringFromMemo(CodeMemo);
+	Validator* validator = new Validator(str);
+	if (validator->isCorrectJSON()) {
 
+	}
+	else {
+		MessageDlg("Invalid JSON try again.", mtError, TMsgDlgButtons() << mbOK, 0);
+	}
 
-void __fastcall TMainForm::EditSettingsClick(TObject *Sender)
-{
-	auto str = getStringFromMemo(CodeMemo);
 }
-//---------------------------------------------------------------------------
-
+// ---------------------------------------------------------------------------
