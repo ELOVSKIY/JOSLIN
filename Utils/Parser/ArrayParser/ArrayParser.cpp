@@ -48,13 +48,22 @@ void ArrayParser::parse() {
 }
 
 void ArrayParser::getArrayType() {
-	for (const string & element : *arrayElements) {
-		int type = getParsedType(element);
-		arrayType = type | arrayType;
-		if ((type != arrayType) && (type != TYPE_ANY)) {
-			throw 0;
-		}
-	}
+	list<string>::iterator it = arrayElements -> begin();
+//	int size = arrayElements->size();
+//	for (int i = 0; i < size; i++) {
+//		string element = arrayElements -
+//		arrayType = type | arrayType;
+//		if ((type != arrayType) && (type != TYPE_ANY)) {
+//			throw 0;
+//		}
+//	}
+	// for (const string & element : *arrayElements) {
+	// int type = getParsedType(element);
+	// arrayType = type | arrayType;
+	// if ((type != arrayType) && (type != TYPE_ANY)) {
+	// throw 0;
+	// }
+	// }
 }
 
 void ArrayParser::parseArrayIntoElements() {
@@ -101,12 +110,12 @@ Value *ArrayParser::getParserValue() {
 }
 
 void ArrayParser::parseArrayObject() {
-	for (const string & element : *arrayElements) {
-		if (element[0] != 'n') {
-			Parser *innerParser = new Parser(element, arrayName);
-			value = innerParser->getObject();
-		}
-	}
+//	for (const string & element : *arrayElements) {
+//		if (element[0] != 'n') {
+//			Parser *innerParser = new Parser(element, arrayName);
+//			value = innerParser->getObject();
+//		}
+//	}
 }
 // ---------------------------------------------------------------------------
 #pragma package(smart_init)

@@ -5,7 +5,7 @@
 #include "ClassSaver.h"
 
 #include <fstream>
-#include "ClassSaver.h"
+#include "KotlinClass.h"
 
 ClassSaver::ClassSaver(string filePath, Object *object, bool dbAnnotation, bool serializeAnnotation) {
     linker = new Linker(object, dbAnnotation, serializeAnnotation);
@@ -14,8 +14,7 @@ ClassSaver::ClassSaver(string filePath, Object *object, bool dbAnnotation, bool 
 }
 
 void ClassSaver::save() {
-    auto classesList = linker->getClassesList();
-    for (auto c: classesList){
+	for (auto& c : linker ->getClassesList()){
         ofstream fout;
         auto path = filePath + c->getFileName();
         fout.open(filePath + c->getFileName());

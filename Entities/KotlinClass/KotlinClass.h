@@ -13,10 +13,10 @@ private:
     string fileContext;
     string fileName;
     string tableName;
-    bool isDatabaseAnnotated = false;
-    bool isResponseAnnotated = false;
-    bool hasPrimaryKey = false;
-    list<Value*> *classFields;
+	bool isDatabaseAnnotated;
+	bool isResponseAnnotated;
+    bool hasPrimaryKey;
+	list<Value*> *classFields;
 public:
     void setIsDatabaseAnnotated(bool isDatabaseAnnotated);
 

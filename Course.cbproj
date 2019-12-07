@@ -64,8 +64,8 @@
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
         <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
         <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
-        <IncludePath>Entities\Object\;Entities\Array\;Entities\Value\;Utils\Parser\Parser\;Utils\Parser\ArrayParser\;Utils\Analyzer\ObjectAnalyzer\;Utils\Analyzer\Interface\;Utils\Analyzer\ElementAnalyzer\;Utils\Analyzer\ArrayAnalyzer\;Utils\Redactor\;Utils\Validator\;..\..\..\..\Desktop\CourseProgram\;$(IncludePath)</IncludePath>
-        <ILINK_LibraryPath>Entities\Object\;Entities\Array\;Entities\Value\;Utils\Parser\Parser\;Utils\Parser\ArrayParser\;Utils\Analyzer\ObjectAnalyzer\;Utils\Analyzer\Interface\;Utils\Analyzer\ElementAnalyzer\;Utils\Analyzer\ArrayAnalyzer\;Utils\Redactor\;Utils\Validator\;..\..\..\..\Desktop\CourseProgram\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <IncludePath>Entities\KotlinClass\;Entities\Linker\;Entities\ClassSaver\;Entities\Object\;Entities\Array\;Entities\Value\;Utils\Parser\Parser\;Utils\Parser\ArrayParser\;Utils\Analyzer\ObjectAnalyzer\;Utils\Analyzer\Interface\;Utils\Analyzer\ElementAnalyzer\;Utils\Analyzer\ArrayAnalyzer\;Utils\Redactor\;Utils\Validator\;..\..\..\..\Desktop\CourseProgram\;$(IncludePath)</IncludePath>
+        <ILINK_LibraryPath>Entities\KotlinClass\;Entities\Linker\;Entities\ClassSaver\;Entities\Object\;Entities\Array\;Entities\Value\;Utils\Parser\Parser\;Utils\Parser\ArrayParser\;Utils\Analyzer\ObjectAnalyzer\;Utils\Analyzer\Interface\;Utils\Analyzer\ElementAnalyzer\;Utils\Analyzer\ArrayAnalyzer\;Utils\Redactor\;Utils\Validator\;..\..\..\..\Desktop\CourseProgram\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <SanitizedProjectName>Course</SanitizedProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
@@ -128,6 +128,18 @@
         <CppCompile Include="Entities\Array\ArrayValue.cpp">
             <DependentOn>Entities\Array\ArrayValue.h</DependentOn>
             <BuildOrder>12</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Entities\ClassSaver\ClassSaver.cpp">
+            <DependentOn>Entities\ClassSaver\ClassSaver.h</DependentOn>
+            <BuildOrder>14</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Entities\KotlinClass\KotlinClass.cpp">
+            <DependentOn>Entities\KotlinClass\KotlinClass.h</DependentOn>
+            <BuildOrder>16</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Entities\Linker\Linker.cpp">
+            <DependentOn>Entities\Linker\Linker.h</DependentOn>
+            <BuildOrder>15</BuildOrder>
         </CppCompile>
         <CppCompile Include="Entities\Object\Object.cpp">
             <DependentOn>Entities\Object\Object.h</DependentOn>
@@ -204,8 +216,9 @@
                 </Source>
             </CPlusPlusBuilder.Personality>
             <Deployment Version="3">
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64250.dll" Class="DependencyModule">
-                    <Platform Name="Win64">
+                <DeployFile LocalName=".\Win32\Debug\Course.tds" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win32">
+                        <RemoteName>Course.tds</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -250,6 +263,11 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64250.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32250mt.dll" Class="DependencyModule">
                     <Platform Name="Win32">
                         <Overwrite>true</Overwrite>
@@ -257,12 +275,6 @@
                 </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64250mt.dll" Class="DependencyModule">
                     <Platform Name="Win64">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName=".\Win32\Debug\Course.tds" Configuration="Debug" Class="DebugSymbols">
-                    <Platform Name="Win32">
-                        <RemoteName>Course.tds</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
