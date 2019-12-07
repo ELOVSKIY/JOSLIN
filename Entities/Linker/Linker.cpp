@@ -1,0 +1,29 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "Linker.h"
+
+list<KotlinClass *> Linker::getClassesList() {
+    return classesList;
+}
+
+Linker::Linker(Object *object, bool dbAnnotation, bool serializeAnnotation) {
+    isSerializeAnnotated = serializeAnnotation;
+    isDatabaseAnnotated = dbAnnotation;
+    inflateClass(object);
+}
+
+void Linker::inflateClass(Object *object) {
+    auto kotlinClass = new KotlinClass(object);
+    kotlinClass->setIsDatabaseAnnotated(isDatabaseAnnotated);
+    kotlinClass->setIsResponseAnnotated(isSerializeAnnotated);
+    classesList.push_front(kotlinClass);
+    for (auto v: object->getObjectFields()){
+        if (v->getType() == TYPE_OBJECT){
+            inflateClass((Object *)v);
+        }
+    }
+}
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
