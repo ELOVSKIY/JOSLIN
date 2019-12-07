@@ -24,6 +24,7 @@ __published: // IDE-managed Components
 	TMenuItem *Analyze;
 	void __fastcall Create1Click(TObject *Sender);
 	void __fastcall EditSettingsClick(TObject *Sender);
+	void __fastcall AnalyzeClick(TObject *Sender);
 
 
 private: // User declarations

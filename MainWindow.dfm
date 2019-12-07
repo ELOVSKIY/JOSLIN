@@ -4,7 +4,7 @@ object MainForm: TMainForm
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'RoomHelper'
-  ClientHeight = 502
+  ClientHeight = 482
   ClientWidth = 755
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,7 +16,7 @@ object MainForm: TMainForm
   OldCreateOrder = False
   DesignSize = (
     755
-    502)
+    482)
   PixelsPerInch = 96
   TextHeight = 19
   object CodeMemo: TMemo
@@ -24,7 +24,7 @@ object MainForm: TMainForm
     Left = 8
     Top = 0
     Width = 739
-    Height = 499
+    Height = 479
     Anchors = [akLeft, akTop, akRight, akBottom]
     TabOrder = 0
   end
@@ -49,6 +49,7 @@ object MainForm: TMainForm
     end
     object Analyze: TMenuItem
       Caption = 'Analyze'
+      OnClick = AnalyzeClick
     end
     object EditSettings: TMenuItem
       Caption = 'Autotabulate'
