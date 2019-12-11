@@ -4,7 +4,7 @@ object MainForm: TMainForm
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'RoomHelper'
-  ClientHeight = 482
+  ClientHeight = 402
   ClientWidth = 755
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,15 +16,15 @@ object MainForm: TMainForm
   OldCreateOrder = False
   DesignSize = (
     755
-    482)
+    402)
   PixelsPerInch = 96
   TextHeight = 19
   object CodeMemo: TMemo
     AlignWithMargins = True
     Left = 8
-    Top = 0
+    Top = 3
     Width = 739
-    Height = 479
+    Height = 399
     Anchors = [akLeft, akTop, akRight, akBottom]
     TabOrder = 0
   end
@@ -33,14 +33,9 @@ object MainForm: TMainForm
     Top = 8
     object FileSettings: TMenuItem
       Caption = 'FIle'
-      object OpenFile: TMenuItem
-        Caption = 'Open File'
-      end
       object SaveFile: TMenuItem
         Caption = 'Save File'
-      end
-      object ChooseDirectory: TMenuItem
-        Caption = 'Target Directory'
+        OnClick = SaveFileClick
       end
     end
     object Create1: TMenuItem
@@ -55,5 +50,13 @@ object MainForm: TMainForm
       Caption = 'Autotabulate'
       OnClick = EditSettingsClick
     end
+  end
+  object OpenDialog: TOpenDialog
+    Left = 696
+    Top = 72
+  end
+  object SaveDialog: TSaveDialog
+    Left = 696
+    Top = 128
   end
 end

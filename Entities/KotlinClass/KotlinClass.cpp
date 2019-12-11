@@ -13,7 +13,10 @@ string KotlinClass::getFileContext() {
 	context.append(tableName + "\")\n");
 	context.append("data class ");
 	context.append(className + "(");
-	for (auto v : *classFields) {
+
+	list<Value*>::iterator iter;
+	for (iter = classFields->begin(); iter != classFields->end(); iter++) {
+		Value* v = *iter;
 		if (isDatabaseAnnotated) {
 			context.append("\n   @ColumnInfo(name = \"");
 			context.append(v->getTableName() + "\")\n");
@@ -28,6 +31,21 @@ string KotlinClass::getFileContext() {
 		context.append(v->getTypeName());
 		context.append(",");
 	}
+//	for (auto v : *classFields) {
+//		if (isDatabaseAnnotated) {
+//			context.append("\n   @ColumnInfo(name = \"");
+//			context.append(v->getTableName() + "\")\n");
+//		}
+//		if (isResponseAnnotated) {
+//			context.append("   @SerializedName(\"");
+//			context.append(v->getSerializeName() + "\")\n");
+//		}
+//		context.append("   val ");
+//		context.append(v->getName());
+//		context.append(": ");
+//		context.append(v->getTypeName());
+//		context.append(",");
+//	}
 	context[context.length() - 1] = '\n';
 	context.append(")");
 	if (hasPrimaryKey) {
@@ -46,9 +64,16 @@ KotlinClass::KotlinClass(Object *object) {
 	this->className = object->getClassName();
 	this->tableName = object->getName();
 	classFields = new list<Value*>;
-	for (auto v : object->getObjectFields()) {
-		classFields->push_front(v);
-	}
+
+	set<Value*> l = object->getObjectFields();
+	set<Value*>::iterator iter;
+	for (iter = l.begin(); iter != l.end(); iter++) {
+		Value* v = *iter;
+        classFields->push_front(v);
+    }
+//	for (auto v : object->getObjectFields()) {
+//		classFields->push_front(v);
+//	}
 }
 
 void KotlinClass::setIsDatabaseAnnotated(bool isDatabaseAnnotated) {

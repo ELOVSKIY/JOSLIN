@@ -1,0 +1,25 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#include <String>
+using namespace std;
+
+#pragma hdrstop
+
+#include "ChooseFileNameDialog.h"
+#include "MainWindow.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TFileNameForm *FileNameForm;
+//---------------------------------------------------------------------------
+__fastcall TFileNameForm::TFileNameForm(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TFileNameForm::ConfirmButtonClick(TObject *Sender)
+{
+    string fileName = unicodeToString(FileNameEdit ->Text);
+}
+//---------------------------------------------------------------------------

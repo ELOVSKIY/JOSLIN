@@ -15,15 +15,24 @@ Linker::Linker(Object *object, bool dbAnnotation, bool serializeAnnotation) {
 }
 
 void Linker::inflateClass(Object *object) {
-    auto kotlinClass = new KotlinClass(object);
+    KotlinClass* kotlinClass = new KotlinClass(object);
     kotlinClass->setIsDatabaseAnnotated(isDatabaseAnnotated);
     kotlinClass->setIsResponseAnnotated(isSerializeAnnotated);
-    classesList.push_front(kotlinClass);
-    for (auto v: object->getObjectFields()){
-        if (v->getType() == TYPE_OBJECT){
+	classesList.push_front(kotlinClass);
+
+    set<Value*> l = object->getObjectFields();
+	set<Value*>::iterator iter;
+	for (iter = l.begin(); iter != l.end(); iter++) {
+		Value* v = *iter;
+		if (v->getType() == TYPE_OBJECT){
             inflateClass((Object *)v);
         }
-    }
+	}
+//    for (auto v: object->getObjectFields()){
+//        if (v->getType() == TYPE_OBJECT){
+//            inflateClass((Object *)v);
+//        }
+//	}
 }
 //---------------------------------------------------------------------------
 #pragma package(smart_init)

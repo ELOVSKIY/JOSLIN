@@ -1,0 +1,62 @@
+object MainForm: TMainForm
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'RoomHelper'
+  ClientHeight = 422
+  ClientWidth = 755
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -16
+  Font.Name = 'Tahoma'
+  Font.Style = [fsBold]
+  Menu = MainMenu
+  OldCreateOrder = False
+  DesignSize = (
+    755
+    422)
+  PixelsPerInch = 96
+  TextHeight = 19
+  object CodeMemo: TMemo
+    AlignWithMargins = True
+    Left = 8
+    Top = 0
+    Width = 739
+    Height = 419
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    TabOrder = 0
+  end
+  object MainMenu: TMainMenu
+    Left = 696
+    Top = 8
+    object FileSettings: TMenuItem
+      Caption = 'FIle'
+      object SaveFile: TMenuItem
+        Caption = 'Save File'
+        OnClick = SaveFileClick
+      end
+    end
+    object Create1: TMenuItem
+      Caption = 'Convert'
+      OnClick = Create1Click
+    end
+    object Analyze: TMenuItem
+      Caption = 'Analyze'
+      OnClick = AnalyzeClick
+    end
+    object EditSettings: TMenuItem
+      Caption = 'Autotabulate'
+      OnClick = EditSettingsClick
+    end
+  end
+  object OpenDialog: TOpenDialog
+    Left = 696
+    Top = 72
+  end
+  object SaveDialog: TSaveDialog
+    Left = 696
+    Top = 128
+  end
+end

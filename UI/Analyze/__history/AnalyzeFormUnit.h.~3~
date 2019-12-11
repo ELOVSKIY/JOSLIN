@@ -1,0 +1,23 @@
+//---------------------------------------------------------------------------
+
+#ifndef AnalyzeFormUnitH
+#define AnalyzeFormUnitH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include <Vcl.Grids.hpp>
+//---------------------------------------------------------------------------
+class TAnalyzeForm : public TForm
+{
+__published:	// IDE-managed Components
+	TStringGrid *StringGrid;
+private:	// User declarations
+public:		// User declarations
+	__fastcall TAnalyzeForm(TComponent* Owner, string plainText);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TAnalyzeForm *AnalyzeForm;
+//---------------------------------------------------------------------------
+#endif

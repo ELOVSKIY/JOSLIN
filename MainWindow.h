@@ -9,6 +9,8 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.WinXCtrls.hpp>
 #include <Vcl.Menus.hpp>
+#include <Vcl.Dialogs.hpp>
+
 
 // ---------------------------------------------------------------------------
 class TMainForm : public TForm {
@@ -17,14 +19,15 @@ __published: // IDE-managed Components
 	TMainMenu *MainMenu;
 	TMenuItem *FileSettings;
 	TMenuItem *EditSettings;
-	TMenuItem *OpenFile;
-	TMenuItem *ChooseDirectory;
 	TMenuItem *SaveFile;
 	TMenuItem *Create1;
 	TMenuItem *Analyze;
+	TOpenDialog *OpenDialog;
+	TSaveDialog *SaveDialog;
 	void __fastcall Create1Click(TObject *Sender);
 	void __fastcall EditSettingsClick(TObject *Sender);
 	void __fastcall AnalyzeClick(TObject *Sender);
+	void __fastcall SaveFileClick(TObject *Sender);
 
 
 private: // User declarations

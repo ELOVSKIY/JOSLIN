@@ -1,0 +1,34 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "ClassSaver.h"
+
+#include <fstream>
+#include "KotlinClass.h"
+#include <list>
+#include <algorithm>
+
+ClassSaver::ClassSaver(string filePath, Object *object, bool dbAnnotation, bool serializeAnnotation) {
+    linker = new Linker(object, dbAnnotation, serializeAnnotation);
+    this->filePath = filePath;
+    save();
+}
+
+void ClassSaver::save() {
+	list<KotlinClass*> l = linker->getClassesList();
+    list<KotlinClass*>::iterator iter;
+	for (iter = l.begin; i < 10; i++) {
+
+	}
+//	list<KotlinClass*> l = linker->getClassesList();
+//	for (KotlinClass& c : l){
+//		ofstream fout;
+//		auto path = filePath + c->getFileName();
+//		fout.open(filePath + c->getFileName());
+//		fout<<c->getFileContext();
+//		fout.close();
+//	}
+}
+//---------------------------------------------------------------------------
+#pragma package(smart_init)

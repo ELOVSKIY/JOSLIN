@@ -6,6 +6,8 @@
 
 #include <fstream>
 #include "KotlinClass.h"
+#include <list>
+#include <algorithm>
 
 ClassSaver::ClassSaver(string filePath, Object *object, bool dbAnnotation, bool serializeAnnotation) {
     linker = new Linker(object, dbAnnotation, serializeAnnotation);
@@ -14,13 +16,24 @@ ClassSaver::ClassSaver(string filePath, Object *object, bool dbAnnotation, bool 
 }
 
 void ClassSaver::save() {
-	for (auto& c : linker ->getClassesList()){
-        ofstream fout;
-        auto path = filePath + c->getFileName();
-        fout.open(filePath + c->getFileName());
-        fout<<c->getFileContext();
-        fout.close();
-    }
+	list<KotlinClass*> l = linker->getClassesList();
+    list<KotlinClass*>::iterator iter;
+	for (iter = l.begin(); iter != l.end(); iter++) {
+		KotlinClass* c = *iter;
+		ofstream fout;
+		string path = filePath + (c->getFileName());
+		fout.open((filePath + c->getFileName()).c_str());
+		fout<<c->getFileContext();
+		fout.close();
+	}
+//	list<KotlinClass*> l = linker->getClassesList();
+//	for (KotlinClass& c : l){
+//		ofstream fout;
+//		auto path = filePath + c->getFileName();
+//		fout.open(filePath + c->getFileName());
+//		fout<<c->getFileContext();
+//		fout.close();
+//	}
 }
 //---------------------------------------------------------------------------
 #pragma package(smart_init)

@@ -64,8 +64,8 @@
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
         <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
         <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
-        <IncludePath>Entities\KotlinClass\;Entities\Linker\;Entities\ClassSaver\;Entities\Object\;Entities\Array\;Entities\Value\;Utils\Parser\Parser\;Utils\Parser\ArrayParser\;Utils\Analyzer\ObjectAnalyzer\;Utils\Analyzer\Interface\;Utils\Analyzer\ElementAnalyzer\;Utils\Analyzer\ArrayAnalyzer\;Utils\Redactor\;Utils\Validator\;..\..\..\..\Desktop\CourseProgram\;$(IncludePath)</IncludePath>
-        <ILINK_LibraryPath>Entities\KotlinClass\;Entities\Linker\;Entities\ClassSaver\;Entities\Object\;Entities\Array\;Entities\Value\;Utils\Parser\Parser\;Utils\Parser\ArrayParser\;Utils\Analyzer\ObjectAnalyzer\;Utils\Analyzer\Interface\;Utils\Analyzer\ElementAnalyzer\;Utils\Analyzer\ArrayAnalyzer\;Utils\Redactor\;Utils\Validator\;..\..\..\..\Desktop\CourseProgram\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <IncludePath>UI\Analyze\;UI\Dialog\;Entities\KotlinClass\;Entities\Linker\;Entities\ClassSaver\;Entities\Object\;Entities\Array\;Entities\Value\;Utils\Parser\Parser\;Utils\Parser\ArrayParser\;Utils\Analyzer\ObjectAnalyzer\;Utils\Analyzer\Interface\;Utils\Analyzer\ElementAnalyzer\;Utils\Analyzer\ArrayAnalyzer\;Utils\Redactor\;Utils\Validator\;..\..\..\..\Desktop\CourseProgram\;$(IncludePath)</IncludePath>
+        <ILINK_LibraryPath>UI\Analyze\;UI\Dialog\;Entities\KotlinClass\;Entities\Linker\;Entities\ClassSaver\;Entities\Object\;Entities\Array\;Entities\Value\;Utils\Parser\Parser\;Utils\Parser\ArrayParser\;Utils\Analyzer\ObjectAnalyzer\;Utils\Analyzer\Interface\;Utils\Analyzer\ElementAnalyzer\;Utils\Analyzer\ArrayAnalyzer\;Utils\Redactor\;Utils\Validator\;..\..\..\..\Desktop\CourseProgram\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <SanitizedProjectName>Course</SanitizedProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
@@ -155,6 +155,18 @@
             <DependentOn>MainWindow.h</DependentOn>
             <BuildOrder>2</BuildOrder>
         </CppCompile>
+        <CppCompile Include="UI\Analyze\AnalyzeFormUnit.cpp">
+            <Form>AnalyzeForm</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>UI\Analyze\AnalyzeFormUnit.h</DependentOn>
+            <BuildOrder>18</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="UI\Dialog\ChooseFileNameDialog.cpp">
+            <Form>FileNameForm</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>UI\Dialog\ChooseFileNameDialog.h</DependentOn>
+            <BuildOrder>17</BuildOrder>
+        </CppCompile>
         <CppCompile Include="Utils\Analyzer\ArrayAnalyzer\ArrayAnalyzer.cpp">
             <DependentOn>Utils\Analyzer\ArrayAnalyzer\ArrayAnalyzer.h</DependentOn>
             <BuildOrder>5</BuildOrder>
@@ -187,6 +199,8 @@
             <DependentOn>Utils\Validator\Validator.h</DependentOn>
             <BuildOrder>3</BuildOrder>
         </CppCompile>
+        <FormResources Include="UI\Dialog\ChooseFileNameDialog.dfm"/>
+        <FormResources Include="UI\Analyze\AnalyzeFormUnit.dfm"/>
         <FormResources Include="MainWindow.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
@@ -263,13 +277,13 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64250.dll" Class="DependencyModule">
-                    <Platform Name="Win64">
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32250mt.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32250mt.dll" Class="DependencyModule">
-                    <Platform Name="Win32">
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64250.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
